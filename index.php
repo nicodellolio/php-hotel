@@ -5,35 +5,35 @@ $hotels = [
     [
         'name' => 'Hotel Belvedere',
         'description' => 'Hotel Belvedere Descrizione',
-        'parking' => true,
+        'parking' => 'yes',
         'vote' => 4,
         'distance_to_center' => 10.4
     ],
     [
         'name' => 'Hotel Futuro',
         'description' => 'Hotel Futuro Descrizione',
-        'parking' => true,
+        'parking' => 'yes',
         'vote' => 2,
         'distance_to_center' => 2
     ],
     [
         'name' => 'Hotel Rivamare',
         'description' => 'Hotel Rivamare Descrizione',
-        'parking' => false,
+        'parking' => 'no',
         'vote' => 1,
         'distance_to_center' => 1
     ],
     [
         'name' => 'Hotel Bellavista',
         'description' => 'Hotel Bellavista Descrizione',
-        'parking' => false,
+        'parking' => 'no',
         'vote' => 5,
         'distance_to_center' => 5.5
     ],
     [
         'name' => 'Hotel Milano',
         'description' => 'Hotel Milano Descrizione',
-        'parking' => true,
+        'parking' => 'yes',
         'vote' => 2,
         'distance_to_center' => 50
     ],
@@ -45,6 +45,7 @@ $hotels[1]['description'] = "The Hotel Futuro offers cozy accommodations, breath
 $hotels[2]['description'] = "Discover comfort and convenience at Hotel Rivamare, complete with modern amenities and stunning views.";
 $hotels[3]['description'] = "Escape to the tranquil Hotel Bellavista, offering serene spaces and personalized experiences.";
 $hotels[4]['description'] = "The Hotel Milano provides a unique blend of style, comfort, and unforgettable city views.";
+
 
 // var_dump($hotels)
 
@@ -76,31 +77,40 @@ $hotels[4]['description'] = "The Hotel Milano provides a unique blend of style, 
     <main>
 
 
-        <div class="table-responsive m-3 rounded">
+        <div class="m-3 rounded">
             <table class="table table-primary">
                 <thead>
                     <tr>
                         <th scope="col">Hotel Name</th>
+                        <th scope="col"></th>
                         <th scope="col">Description</th>
+                        <th scope="col"></th>
                         <th scope="col">Parking</th>
+                        <th scope="col"></th>
                         <th scope="col">Vote</th>
+                        <th scope="col"></th>
                         <th scope="col">Distance from center</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="">
 
-                    <?php 
+                    <?php
                     foreach ($hotels as $key => $hotel) {
-                        echo "<tr>" . $hotel . "<tr>";
-                    }
+                        echo "<tr>";
 
-                    foreach ($hotel as $key => $hotel_data) {
-                        if (!empty($hotel_data)) {
-                            echo "<td>" . $hotel_data . "<td>";
-                            if ($key == 'parking' && $hotel['parking'] == true) {
-                                "<td> yes <td>";
+                        foreach ($hotel as $key => $hotel_data) {
+                            if (!empty($hotel_data)) {
+                                echo "<td>" . $hotel_data . "<td>";
+                                if ($key == 'parking' && $hotel['parking'] == true) {
+                                    "<td> yes <td>";
+                                }
+                                elseif ($key == 'parking' && $hotel['parking'] == false) {
+                                    "<td> no <td>";
+                                }
+                                
                             }
                         }
+                        echo '</tr>';
                     }
                     ?>
 
@@ -108,11 +118,6 @@ $hotels[4]['description'] = "The Hotel Milano provides a unique blend of style, 
             </table>
         </div>
 
-        <?php
-
-        // echo ("$key : $hotel_data");
-
-        ?>
     </main>
 
 </body>
