@@ -40,11 +40,20 @@ $hotels = [
 
 ];
 
-foreach ($hotels as $hotel) {
-    foreach ($hotel as $key => $hotel_data) {
-        echo $key . ": " . $hotel_data . '<br>';
-    }
-}
+$hotels[0]['description'] = "Experience luxury at Hotel Belvedere, featuring elegant rooms, gourmet dining, and exceptional service.";
+$hotels[1]['description'] = "The Hotel Futuro offers cozy accommodations, breathtaking scenery, and warm hospitality.";
+$hotels[2]['description'] = "Discover comfort and convenience at Hotel Rivamare, complete with modern amenities and stunning views.";
+$hotels[3]['description'] = "Escape to the tranquil Hotel Bellavista, offering serene spaces and personalized experiences.";
+$hotels[4]['description'] = "The Hotel Milano provides a unique blend of style, comfort, and unforgettable city views.";
+
+// var_dump($hotels)
+
+
+// foreach ($hotels as $hotel) {
+//     foreach ($hotel as $key => $hotel_data) {
+//         echo $key . ": " . $hotel_data . '<br>';
+//     }
+// }
 
 ?>
 
@@ -67,40 +76,41 @@ foreach ($hotels as $hotel) {
     <main>
 
 
-        <div class="table-responsive">
+        <div class="table-responsive m-3 rounded">
             <table class="table table-primary">
                 <thead>
                     <tr>
-
-                        <?php
-                        foreach ($hotels as $hotel) {
-                            for ($i=0; $i < count($hotel); $i++) { 
-                                echo '<th scope="col">' . $key . '</th>';
-                            }
-                        }
-                        ?>
-
-                        
+                        <th scope="col">Hotel Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Parking</th>
+                        <th scope="col">Vote</th>
+                        <th scope="col">Distance from center</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
-                        <td scope="row">R1C1</td>
-                        <td>R1C2</td>
-                        <td>R1C3</td>
-                    </tr>
-                    <tr class="">
-                        <td scope="row">Item</td>
-                        <td>Item</td>
-                        <td>Item</td>
-                    </tr>
+
+                    <?php 
+                    foreach ($hotels as $key => $hotel) {
+                        echo "<tr>" . $hotel . "<tr>";
+                    }
+
+                    foreach ($hotel as $key => $hotel_data) {
+                        if (!empty($hotel_data)) {
+                            echo "<td>" . $hotel_data . "<td>";
+                            if ($key == 'parking' && $hotel['parking'] == true) {
+                                "<td> yes <td>";
+                            }
+                        }
+                    }
+                    ?>
+
                 </tbody>
             </table>
         </div>
 
         <?php
 
-        echo ("$key : $hotel_data");
+        // echo ("$key : $hotel_data");
 
         ?>
     </main>

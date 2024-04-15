@@ -9,3 +9,4 @@
 
 # Bonus:
 - Aggiungere un form ad inizio pagina che tramite una richiesta GET permetta di filtrare gli hotel che hanno un parcheggio.
+
